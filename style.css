@@ -1,0 +1,142 @@
+:root {
+    --text-color: #DBE4EF;
+    --card-front-color: #144480;
+    --card-back-color: #00F4BF;
+    --font-family: 'Bai Jamjuree', sans-serif;
+}
+
+body {
+    background: url('img/bg-desktop.webp') no-repeat center center fixed;
+    background-size: cover;
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    line-height: 1.5;
+}
+
+#container {
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 4rem;
+    gap: 3rem;
+}
+
+.cartao {
+    margin: 1rem;
+    height: 20rem;
+    flex-grow: 1;
+    flex-basis: calc(33% - 6rem);
+    transition: transform 300ms ease-in-out;
+}
+
+.cartao__conteudo {
+    background-color: var(--card-front-color);
+    text-align: center;
+    position: relative;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 300ms ease-in-out;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.cartao__conteudo h3 {
+    color: var(--text-color);
+    text-align: left;
+    padding: 0.5rem;
+    position: absolute;
+    margin: 0.6rem;
+    border-radius: 0.6rem;
+    font-size: 1rem;
+    backface-visibility: hidden;
+    z-index: 1;
+}
+
+.cartao__conteudo p {
+    margin-top: 1rem;
+    padding: 2rem;
+    font-size: 1rem;
+}
+
+.cartao__conteudo__pergunta p {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.cartao__conteudo__resposta p {
+    color: var(--card-back-color);
+    font-weight: 700;
+    background-color: rgba(0, 244, 191, 0.2);
+    padding: 2rem;
+    border: 2px solid var(--card-back-color);
+}
+
+.cartao.active .cartao__conteudo {
+    transform: rotateY(180deg);
+}
+
+.cartao__conteudo__pergunta,
+.cartao__conteudo__resposta {
+    backface-visibility: hidden;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cartao__conteudo__resposta {
+    transform: rotateY(180deg);
+}
+
+footer {
+    background-color: #000;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer p {
+    font-size: 0.6rem;
+    margin-top: 0.5rem;
+}
+
+/* Estilos para dispositivos móveis */
+@media (max-width: 560px) {
+    body {
+        background: url('img/bg-mobile.webp') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    #container {
+        padding: 2rem; /* Reduzindo o padding para telas pequenas */
+    }
+
+    .cartao {
+        flex: 1 0 calc(100% - 2rem); /* Cartões ocupando 100% da largura */
+        height: auto; /* Ajustando a altura do cartão para ser mais flexível */
+    }
+
+    .cartao__conteudo h3 {
+        font-size: 3.5rem;
+        padding: 1rem;
+    }
+
+    .cartao__conteudo p {
+        font-size: 4rem;
+        padding: 1.5rem;
+    }
+
+    footer p {
+        font-size: 0.5rem;
+    }
+}
